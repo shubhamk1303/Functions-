@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+int PrimeOrNot(int n);
+
+int main() 
+{
+    int n,i;
+    int Sum=0;
+
+    cout << "Enter a positive integer: "<<endl;
+    cin>>n;
+
+    for(i=2;i<=n/2;i++) 
+    {
+        if (PrimeOrNot(i)) 
+        {
+            if (PrimeOrNot(n-i)) 
+            {
+                cout<<n<<"="<<i<<"+"<< n-i<<endl;
+                Sum=1;
+            }
+        }
+    }
+
+    if (!Sum)
+      cout<<n<<"ERROR!!!!!!!";
+
+    return 0;
+}
+
+int PrimeOrNot(int n) 
+{
+    int i;
+    int Prime=1;
+
+    if (n == 0 || n == 1) 
+    {
+        Prime=0;
+    }
+    else 
+    {
+        for(i = 2; i <= n/2; ++i) 
+        {
+            if(n % i == 0) 
+            {
+                Prime=0;
+                break;
+            }
+        }
+    }
+
+    return Prime;
+}
